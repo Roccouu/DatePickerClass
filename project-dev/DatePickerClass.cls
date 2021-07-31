@@ -2,19 +2,21 @@ VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
-Attribute VB_Name = "DatePickerClass"
+Attribute VB_Name = "DatePickerClass_v201"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-' ------------------------------------------------------------------------------------------------------------
+' ================================ DATE PICKER CLASS ================================='
+' =============================== CREDITS AND LICENSE ================================'
+' ------------------------------------------------------------------------------------'
 ' MIT License
-'
-' Copyright (c) 2020 Roberto Carlos Romay Medina (Roccou)
+' ------------------------------------------------------------------------------------'
+' Copyright (c) 2021 Roberto Carlos Romay Medina (Roccou)
 ' DatePickerClass, Excel simple date picker for use with macros.
-' Version: 2.0.0
+' Version: 2.0.1
 ' GitHub: https://github.com/roccouu/
 ' Potosí - Bolívia
 '
@@ -35,771 +37,700 @@ Option Explicit
 ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ' SOFTWARE.
-'
-'
+' ------------------------------------------------------------------------------------'
 ' ACKNOWLEDGMENS
+' ------------------------------------------------------------------------------------'
 ' INSPIRED ON ANDRÉS ROJAS MONCADA'S CALENDAR CORE ALGORITHM - Thanks a lot AndrÃ©s for all your great talent.
-' Nota del autor -----------------------------------------------------------------------------
+' Nota del autor ---------------------------------------------------------------------'
 ' Andrés Rojas Moncada - Autor del canal Excel Hecho Fácil en YouTube
 ' Versión 1.0 - 20 de julio de 2015
 ' URL del canal: www.youtube.com/jarmoncada01
 ' Para ver algunos ejemplos sobre el uso de este calendario, observa este video.
 ' Enlace: |||||||||||||||||||| https://www.youtube.com/watch?v=FkjsuN2zqSU ||||||||||||||||||||
-' ! Muchas gracias y espero lo disfruten ! ---------------------------------------------------
-' ------------------------------------------------------------------------------------------------------------
-
-Private DatepickerFrame2 As MSForms.Frame
-Attribute DatepickerFrame2.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblHead2 As MSForms.Label
-Attribute DatepickerLblHead2.VB_VarHelpID = -1
-
-Private WithEvents DatepickerSpinHead1 As MSForms.SpinButton
-Attribute DatepickerSpinHead1.VB_VarHelpID = -1
-Private WithEvents DatepickerSpinHead2 As MSForms.SpinButton
-Attribute DatepickerSpinHead2.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody1 As MSForms.Label
-Attribute DatepickerLblBody1.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody2 As MSForms.Label
-Attribute DatepickerLblBody2.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody3 As MSForms.Label
-Attribute DatepickerLblBody3.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody4 As MSForms.Label
-Attribute DatepickerLblBody4.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody5 As MSForms.Label
-Attribute DatepickerLblBody5.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody6 As MSForms.Label
-Attribute DatepickerLblBody6.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody7 As MSForms.Label
-Attribute DatepickerLblBody7.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody8 As MSForms.Label
-Attribute DatepickerLblBody8.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody9 As MSForms.Label
-Attribute DatepickerLblBody9.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody10 As MSForms.Label
-Attribute DatepickerLblBody10.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody11 As MSForms.Label
-Attribute DatepickerLblBody11.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody12 As MSForms.Label
-Attribute DatepickerLblBody12.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody13 As MSForms.Label
-Attribute DatepickerLblBody13.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody14 As MSForms.Label
-Attribute DatepickerLblBody14.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody15 As MSForms.Label
-Attribute DatepickerLblBody15.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody16 As MSForms.Label
-Attribute DatepickerLblBody16.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody17 As MSForms.Label
-Attribute DatepickerLblBody17.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody18 As MSForms.Label
-Attribute DatepickerLblBody18.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody19 As MSForms.Label
-Attribute DatepickerLblBody19.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody20 As MSForms.Label
-Attribute DatepickerLblBody20.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody21 As MSForms.Label
-Attribute DatepickerLblBody21.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody22 As MSForms.Label
-Attribute DatepickerLblBody22.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody23 As MSForms.Label
-Attribute DatepickerLblBody23.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody24 As MSForms.Label
-Attribute DatepickerLblBody24.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody25 As MSForms.Label
-Attribute DatepickerLblBody25.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody26 As MSForms.Label
-Attribute DatepickerLblBody26.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody27 As MSForms.Label
-Attribute DatepickerLblBody27.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody28 As MSForms.Label
-Attribute DatepickerLblBody28.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody29 As MSForms.Label
-Attribute DatepickerLblBody29.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody30 As MSForms.Label
-Attribute DatepickerLblBody30.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody31 As MSForms.Label
-Attribute DatepickerLblBody31.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody32 As MSForms.Label
-Attribute DatepickerLblBody32.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody33 As MSForms.Label
-Attribute DatepickerLblBody33.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody34 As MSForms.Label
-Attribute DatepickerLblBody34.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody35 As MSForms.Label
-Attribute DatepickerLblBody35.VB_VarHelpID = -1
-
-Private WithEvents DatepickerLblBody36 As MSForms.Label
-Attribute DatepickerLblBody36.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody37 As MSForms.Label
-Attribute DatepickerLblBody37.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody38 As MSForms.Label
-Attribute DatepickerLblBody38.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody39 As MSForms.Label
-Attribute DatepickerLblBody39.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody40 As MSForms.Label
-Attribute DatepickerLblBody40.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody41 As MSForms.Label
-Attribute DatepickerLblBody41.VB_VarHelpID = -1
-Private WithEvents DatepickerLblBody42 As MSForms.Label
-Attribute DatepickerLblBody42.VB_VarHelpID = -1
-
-
-Private CDateSelected As Date 'A public property to get the user's selected date
-
-Private cInstance As Boolean
-Private cJustForm As Boolean
-Private cMsgBox As Boolean
-Private cReceptorControl As MSForms.Control
-
-Private cMonths As Double
-Private cYears As Double
-Private cDays As Long
-Private cUnDays As Long
-
-Private cMarkedDay As Boolean
-
-Private DaysColor As Long
-
-Private DayBorderStyle As Long 'Default values
-Private DayBorderColor As Long
-Private DayBackColor As Long
-Private DayForeColor As Long
-
-Private cDayBackColor As Long 'Custom values
-Private cDayForeColor As Long
-Private Const cDaySideColor As Long = 7755409
-
-Private DaySunForecolor As Long
+' ! Muchas gracias y espero lo disfruten ! -------------------------------------------'
+'
+' =============================== CREDITS AND LICENSE ================================'
+' ================================ DATE PICKER CLASS ================================='
 
 
 
+' =========================== DATE PICKER CLASS STRUCTURE ==========================='
+' OBJECT VARIABLES (GLOOBJ_) --------------------------------------------------------'
+' VARIABLES (GLOStr_) ---------------------------------------------------------------'
+' CONSTANTS (GLOSTR_) ---------------------------------------------------------------'
+' CONSTANTS ERROR MESSAGES (GLOSTR_ERR_) --------------------------------------------'
+' PROPERTIES ------------------------------------------------------------------------'
+' CONSTRUCTOR/DESTRUCTOR ------------------------------------------------------------'
+' CONTROLS EVENTS -------------------------------------------------------------------'
+' CORE METHODS LIST PRIVATE ---------------------------------------------------------'
+' DatePicker_open
+' DatePicker_close
+' DatePicker_controls_event_select_date
+' DatePicker_controls_event_mouse_move
+' DatePicker_core_InicializaFormularioCalendario
+' DatePicker_core_CargarLosDias
+' DatePicker_core_change_month_year
+' DatePicker_core_remark_the_day
+' DatePicker_core_remark_selected_day
+' DatePicker_core_change_colors
+' DatePicker_core_add
+' DatePicker_core_use
+' DatePicker_core_set_controls
+' DatePicker_core_reset
+' ASSETS ----------------------------------------------------------------------------'
+' Datepicker_asset_get_horizontal_align
+' Datepicker_asset_get_vertical_align
+' ERRORS MANNAGEMENT AND ASSERTSIONS ------------------------------------------------'
+' Debug_assert
+' PUBLIC METHODS LIST (INTERFACE) ---------------------------------------------------'
+' DatePicker
+' =========================== DATE PICKER CLASS STRUCTURE ==========================='
 
-'PROPERTIES
-Public Property Get GetDATE() As Date
-  GetDATE = CDateSelected
-End Property
+
+
+' =========================== DATE PICKER CLASS STRUCTURE ============================'
+' OBJECT VARIABLES (GLOOBJ_) --------------------------------------------------------'
+Private GLOOBJ_FraDatepicker1 As MSForms.Frame ' The DPC main object
+Private GLOOBJ_FraDatepicker2 As MSForms.Frame
+Private GLOOBJ_CtlReceptor As Object 'MSForms.Control
+
+Private WithEvents GLOOBJ_LblHead2 As MSForms.Label
+Attribute GLOOBJ_LblHead2.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_SpinHead1 As MSForms.SpinButton
+Attribute GLOOBJ_SpinHead1.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_SpinHead2 As MSForms.SpinButton
+Attribute GLOOBJ_SpinHead2.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody1 As MSForms.Label
+Attribute GLOOBJ_LblBody1.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody2 As MSForms.Label
+Attribute GLOOBJ_LblBody2.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody3 As MSForms.Label
+Attribute GLOOBJ_LblBody3.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody4 As MSForms.Label
+Attribute GLOOBJ_LblBody4.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody5 As MSForms.Label
+Attribute GLOOBJ_LblBody5.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody6 As MSForms.Label
+Attribute GLOOBJ_LblBody6.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody7 As MSForms.Label
+Attribute GLOOBJ_LblBody7.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody8 As MSForms.Label
+Attribute GLOOBJ_LblBody8.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody9 As MSForms.Label
+Attribute GLOOBJ_LblBody9.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody10 As MSForms.Label
+Attribute GLOOBJ_LblBody10.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody11 As MSForms.Label
+Attribute GLOOBJ_LblBody11.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody12 As MSForms.Label
+Attribute GLOOBJ_LblBody12.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody13 As MSForms.Label
+Attribute GLOOBJ_LblBody13.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody14 As MSForms.Label
+Attribute GLOOBJ_LblBody14.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody15 As MSForms.Label
+Attribute GLOOBJ_LblBody15.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody16 As MSForms.Label
+Attribute GLOOBJ_LblBody16.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody17 As MSForms.Label
+Attribute GLOOBJ_LblBody17.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody18 As MSForms.Label
+Attribute GLOOBJ_LblBody18.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody19 As MSForms.Label
+Attribute GLOOBJ_LblBody19.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody20 As MSForms.Label
+Attribute GLOOBJ_LblBody20.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody21 As MSForms.Label
+Attribute GLOOBJ_LblBody21.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody22 As MSForms.Label
+Attribute GLOOBJ_LblBody22.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody23 As MSForms.Label
+Attribute GLOOBJ_LblBody23.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody24 As MSForms.Label
+Attribute GLOOBJ_LblBody24.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody25 As MSForms.Label
+Attribute GLOOBJ_LblBody25.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody26 As MSForms.Label
+Attribute GLOOBJ_LblBody26.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody27 As MSForms.Label
+Attribute GLOOBJ_LblBody27.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody28 As MSForms.Label
+Attribute GLOOBJ_LblBody28.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody29 As MSForms.Label
+Attribute GLOOBJ_LblBody29.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody30 As MSForms.Label
+Attribute GLOOBJ_LblBody30.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody31 As MSForms.Label
+Attribute GLOOBJ_LblBody31.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody32 As MSForms.Label
+Attribute GLOOBJ_LblBody32.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody33 As MSForms.Label
+Attribute GLOOBJ_LblBody33.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody34 As MSForms.Label
+Attribute GLOOBJ_LblBody34.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody35 As MSForms.Label
+Attribute GLOOBJ_LblBody35.VB_VarHelpID = -1
+
+Private WithEvents GLOOBJ_LblBody36 As MSForms.Label
+Attribute GLOOBJ_LblBody36.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody37 As MSForms.Label
+Attribute GLOOBJ_LblBody37.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody38 As MSForms.Label
+Attribute GLOOBJ_LblBody38.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody39 As MSForms.Label
+Attribute GLOOBJ_LblBody39.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody40 As MSForms.Label
+Attribute GLOOBJ_LblBody40.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody41 As MSForms.Label
+Attribute GLOOBJ_LblBody41.VB_VarHelpID = -1
+Private WithEvents GLOOBJ_LblBody42 As MSForms.Label
+Attribute GLOOBJ_LblBody42.VB_VarHelpID = -1
+
+' VARIABLES (GLOStr_) ---------------------------------------------------------------'
+Private GLODatSelected As Date 'A public property to get the user's selected date
+
+Private GLOBooInstance As Boolean
+Private GLOBooJustForm As Boolean
+Private GLOBooMsgBox As Boolean
+Private GLOBooMarkedDay As Boolean
+
+Private GLOLngMonths As Double
+Private GLOLngYears As Double
+Private GLOLngDays As Long
+Private GLOLngUnDays As Long
+
+Private GLOLngDaysColor As Long
+
+Private GLOLngDayBorderStyle As Long 'Default values
+Private GLOLngDayBorderColor As Long
+Private GLOLngDayBackColor As Long
+Private GLOLngDayForeColor As Long
+
+Private GLOLngCustomDayBackColor As Long 'Custom values
+Private GLOLngCustomDayForeColor As Long
+
+Private GLOLngDaySunForecolor As Long
+
+' VARIABLES CUSTOM ------------------------------------------------------------------'
+Public Enum DPC_JustForm
+  dpcAsObject
+  dpcAsForm
+End Enum
+
+Public Enum DPC_Alignment
+  dpcLeft
+  dpcRight
+  dpcCenter
+End Enum
+
+' CONSTANTS (GLOSTR_) ---------------------------------------------------------------'
+Private Const GLOLNG_DAY_SIDE_COLOR As Long = 7755409
+
+' CONSTANTS ERROR MESSAGES (GLOSTR_ERR_) --------------------------------------------'
+Private Const CUSTOM_ERROR As Long = VBA.vbObjectError + 516
 
 
 
-'CONSTRUCTOR/DESTRUCTOR
+' PROPERTIES ------------------------------------------------------------------------'
+
+
+
+' CONSTRUCTOR/DESTRUCTOR ------------------------------------------------------------'
 Private Sub Class_Initialize()
-  cDays = VBA.Day(VBA.Date)
-  cMonths = VBA.Month(VBA.Date)
-  cYears = VBA.Year(VBA.Date)
-
-  DaysColor = VBA.RGB(100, 100, 100)
-  DaySunForecolor = VBA.RGB(255, 100, 100)
   
-  cDayBackColor = VBA.RGB(33, 115, 70)
-  cDayForeColor = cDayBackColor + cDaySideColor
+  Let GLOLngDays = VBA.Day(VBA.Date)
+  Let GLOLngMonths = VBA.Month(VBA.Date)
+  Let GLOLngYears = VBA.Year(VBA.Date)
 
-  CDateSelected = VBA.Date()
+  Let GLOLngDaysColor = VBA.RGB(100, 100, 100)
+  Let GLOLngDaySunForecolor = VBA.RGB(255, 100, 100)
+  
+  Let GLOLngCustomDayBackColor = VBA.RGB(33, 115, 70)
+  Let GLOLngCustomDayForeColor = GLOLngCustomDayBackColor + GLOLNG_DAY_SIDE_COLOR
+
+  Let GLODatSelected = VBA.Date()
+
 End Sub
 
 Private Sub Class_Terminate()
-  Call DatePicker_reset
+  Call DatePicker_core_reset
 End Sub
 
 
 
-'METHODS PRIVATE
-'Methods Controls Events
-'Methods calendar labels picker Events
-Private Sub DatepickerSpinHead1_Change()
- Call DatePicker_ChangeMonthYear(DatepickerSpinHead1.Value)
+' CONTROLS EVENTS -------------------------------------------------------------------'
+Private Sub GLOOBJ_SpinHead1_Change()
+ Call DatePicker_core_change_month_year(GLOOBJ_SpinHead1.Value)
 End Sub
 
-Private Sub DatepickerSpinHead2_Change()
- Call DatePicker_ChangeMonthYear(DatepickerSpinHead2.Value, True)
+Private Sub GLOOBJ_SpinHead2_Change()
+ Call DatePicker_core_change_month_year(GLOOBJ_SpinHead2.Value, True)
 End Sub
 
-Private Sub DatepickerLblHead2_Click()
- Call DatePicker_EventSelectDate(DatepickerLblHead2, True)
+Private Sub GLOOBJ_LblHead2_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblHead2, True)
 End Sub
 
-Private Sub DatepickerLblHead2_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- DatepickerLblHead2.ForeColor = cDayBackColor
+Private Sub GLOOBJ_LblHead2_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Let GLOOBJ_LblHead2.ForeColor = GLOLngCustomDayBackColor
 End Sub
 
 
-Private Sub DatepickerLblBody1_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody1)
+Private Sub GLOOBJ_LblBody1_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody1)
 End Sub
 
-Private Sub DatepickerLblBody1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody1)
+Private Sub GLOOBJ_LblBody1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody1)
 End Sub
 
-Private Sub DatepickerLblBody2_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody2)
+Private Sub GLOOBJ_LblBody2_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody2)
 End Sub
 
-Private Sub DatepickerLblBody2_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody2)
+Private Sub GLOOBJ_LblBody2_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody2)
 End Sub
 
-Private Sub DatepickerLblBody3_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody3)
+Private Sub GLOOBJ_LblBody3_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody3)
 End Sub
 
-Private Sub DatepickerLblBody3_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody3)
+Private Sub GLOOBJ_LblBody3_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody3)
 End Sub
 
-Private Sub DatepickerLblBody4_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody4)
+Private Sub GLOOBJ_LblBody4_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody4)
 End Sub
 
-Private Sub DatepickerLblBody4_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody4)
+Private Sub GLOOBJ_LblBody4_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody4)
 End Sub
 
-Private Sub DatepickerLblBody5_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody5)
+Private Sub GLOOBJ_LblBody5_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody5)
 End Sub
 
-Private Sub DatepickerLblBody5_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody5)
+Private Sub GLOOBJ_LblBody5_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody5)
 End Sub
 
-Private Sub DatepickerLblBody6_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody6)
+Private Sub GLOOBJ_LblBody6_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody6)
 End Sub
 
-Private Sub DatepickerLblBody6_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody6)
+Private Sub GLOOBJ_LblBody6_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody6)
 End Sub
 
-Private Sub DatepickerLblBody7_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody7)
+Private Sub GLOOBJ_LblBody7_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody7)
 End Sub
 
-Private Sub DatepickerLblBody7_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody7)
+Private Sub GLOOBJ_LblBody7_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody7)
 End Sub
 
-Private Sub DatepickerLblBody8_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody8)
+Private Sub GLOOBJ_LblBody8_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody8)
 End Sub
 
-Private Sub DatepickerLblBody8_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody8)
+Private Sub GLOOBJ_LblBody8_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody8)
 End Sub
 
-Private Sub DatepickerLblBody9_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody9)
+Private Sub GLOOBJ_LblBody9_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody9)
 End Sub
 
-Private Sub DatepickerLblBody9_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody9)
+Private Sub GLOOBJ_LblBody9_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody9)
 End Sub
 
-Private Sub DatepickerLblBody10_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody10)
+Private Sub GLOOBJ_LblBody10_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody10)
 End Sub
 
-Private Sub DatepickerLblBody10_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody10)
+Private Sub GLOOBJ_LblBody10_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody10)
 End Sub
 
-Private Sub DatepickerLblBody11_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody11)
+Private Sub GLOOBJ_LblBody11_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody11)
 End Sub
 
-Private Sub DatepickerLblBody11_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody11)
+Private Sub GLOOBJ_LblBody11_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody11)
 End Sub
 
-Private Sub DatepickerLblBody12_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody12)
+Private Sub GLOOBJ_LblBody12_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody12)
 End Sub
 
-Private Sub DatepickerLblBody12_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody12)
+Private Sub GLOOBJ_LblBody12_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody12)
 End Sub
 
-Private Sub DatepickerLblBody13_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody13)
+Private Sub GLOOBJ_LblBody13_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody13)
 End Sub
 
-Private Sub DatepickerLblBody13_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody13)
+Private Sub GLOOBJ_LblBody13_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody13)
 End Sub
 
-Private Sub DatepickerLblBody14_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody14)
+Private Sub GLOOBJ_LblBody14_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody14)
 End Sub
 
-Private Sub DatepickerLblBody14_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody14)
+Private Sub GLOOBJ_LblBody14_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody14)
 End Sub
 
-Private Sub DatepickerLblBody15_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody15)
+Private Sub GLOOBJ_LblBody15_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody15)
 End Sub
 
-Private Sub DatepickerLblBody15_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody15)
+Private Sub GLOOBJ_LblBody15_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody15)
 End Sub
 
-Private Sub DatepickerLblBody16_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody16)
+Private Sub GLOOBJ_LblBody16_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody16)
 End Sub
 
-Private Sub DatepickerLblBody16_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody16)
+Private Sub GLOOBJ_LblBody16_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody16)
 End Sub
 
-Private Sub DatepickerLblBody17_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody17)
+Private Sub GLOOBJ_LblBody17_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody17)
 End Sub
 
-Private Sub DatepickerLblBody17_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody17)
+Private Sub GLOOBJ_LblBody17_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody17)
 End Sub
 
-Private Sub DatepickerLblBody18_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody18)
+Private Sub GLOOBJ_LblBody18_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody18)
 End Sub
 
-Private Sub DatepickerLblBody18_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody18)
+Private Sub GLOOBJ_LblBody18_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody18)
 End Sub
 
-Private Sub DatepickerLblBody19_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody19)
+Private Sub GLOOBJ_LblBody19_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody19)
 End Sub
 
-Private Sub DatepickerLblBody19_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody19)
+Private Sub GLOOBJ_LblBody19_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody19)
 End Sub
 
-Private Sub DatepickerLblBody20_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody20)
+Private Sub GLOOBJ_LblBody20_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody20)
 End Sub
 
-Private Sub DatepickerLblBody20_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody20)
+Private Sub GLOOBJ_LblBody20_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody20)
 End Sub
 
-Private Sub DatepickerLblBody21_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody21)
+Private Sub GLOOBJ_LblBody21_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody21)
 End Sub
 
-Private Sub DatepickerLblBody21_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody21)
+Private Sub GLOOBJ_LblBody21_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody21)
 End Sub
 
-Private Sub DatepickerLblBody22_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody22)
+Private Sub GLOOBJ_LblBody22_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody22)
 End Sub
 
-Private Sub DatepickerLblBody22_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody22)
+Private Sub GLOOBJ_LblBody22_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody22)
 End Sub
 
-Private Sub DatepickerLblBody23_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody23)
+Private Sub GLOOBJ_LblBody23_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody23)
 End Sub
 
-Private Sub DatepickerLblBody23_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody23)
+Private Sub GLOOBJ_LblBody23_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody23)
 End Sub
 
-Private Sub DatepickerLblBody24_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody24)
+Private Sub GLOOBJ_LblBody24_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody24)
 End Sub
 
-Private Sub DatepickerLblBody24_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody24)
+Private Sub GLOOBJ_LblBody24_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody24)
 End Sub
 
-Private Sub DatepickerLblBody25_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody25)
+Private Sub GLOOBJ_LblBody25_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody25)
 End Sub
 
-Private Sub DatepickerLblBody25_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody25)
+Private Sub GLOOBJ_LblBody25_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody25)
 End Sub
 
-Private Sub DatepickerLblBody26_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody26)
+Private Sub GLOOBJ_LblBody26_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody26)
 End Sub
 
-Private Sub DatepickerLblBody26_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody26)
+Private Sub GLOOBJ_LblBody26_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody26)
 End Sub
 
-Private Sub DatepickerLblBody27_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody27)
+Private Sub GLOOBJ_LblBody27_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody27)
 End Sub
 
-Private Sub DatepickerLblBody27_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody27)
+Private Sub GLOOBJ_LblBody27_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody27)
 End Sub
 
-Private Sub DatepickerLblBody28_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody28)
+Private Sub GLOOBJ_LblBody28_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody28)
 End Sub
 
-Private Sub DatepickerLblBody28_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody28)
+Private Sub GLOOBJ_LblBody28_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody28)
 End Sub
 
-Private Sub DatepickerLblBody29_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody29)
+Private Sub GLOOBJ_LblBody29_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody29)
 End Sub
 
-Private Sub DatepickerLblBody29_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody29)
+Private Sub GLOOBJ_LblBody29_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody29)
 End Sub
 
-Private Sub DatepickerLblBody30_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody30)
+Private Sub GLOOBJ_LblBody30_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody30)
 End Sub
 
-Private Sub DatepickerLblBody30_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody30)
+Private Sub GLOOBJ_LblBody30_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody30)
 End Sub
 
-Private Sub DatepickerLblBody31_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody31)
+Private Sub GLOOBJ_LblBody31_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody31)
 End Sub
 
-Private Sub DatepickerLblBody31_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody31)
+Private Sub GLOOBJ_LblBody31_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody31)
 End Sub
 
-Private Sub DatepickerLblBody32_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody32)
+Private Sub GLOOBJ_LblBody32_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody32)
 End Sub
 
-Private Sub DatepickerLblBody32_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody32)
+Private Sub GLOOBJ_LblBody32_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody32)
 End Sub
 
-Private Sub DatepickerLblBody33_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody33)
+Private Sub GLOOBJ_LblBody33_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody33)
 End Sub
 
-Private Sub DatepickerLblBody33_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody33)
+Private Sub GLOOBJ_LblBody33_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody33)
 End Sub
 
-Private Sub DatepickerLblBody34_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody34)
+Private Sub GLOOBJ_LblBody34_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody34)
 End Sub
 
-Private Sub DatepickerLblBody34_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody34)
+Private Sub GLOOBJ_LblBody34_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody34)
 End Sub
 
-Private Sub DatepickerLblBody35_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody35)
+Private Sub GLOOBJ_LblBody35_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody35)
 End Sub
 
-Private Sub DatepickerLblBody35_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody35)
+Private Sub GLOOBJ_LblBody35_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody35)
 End Sub
 
-Private Sub DatepickerLblBody36_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody36)
+Private Sub GLOOBJ_LblBody36_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody36)
 End Sub
 
-Private Sub DatepickerLblBody36_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody36)
+Private Sub GLOOBJ_LblBody36_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody36)
 End Sub
 
-Private Sub DatepickerLblBody37_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody37)
+Private Sub GLOOBJ_LblBody37_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody37)
 End Sub
 
-Private Sub DatepickerLblBody37_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody37)
+Private Sub GLOOBJ_LblBody37_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody37)
 End Sub
 
-Private Sub DatepickerLblBody38_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody38)
+Private Sub GLOOBJ_LblBody38_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody38)
 End Sub
 
-Private Sub DatepickerLblBody38_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody38)
+Private Sub GLOOBJ_LblBody38_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody38)
 End Sub
 
-Private Sub DatepickerLblBody39_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody39)
+Private Sub GLOOBJ_LblBody39_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody39)
 End Sub
 
-Private Sub DatepickerLblBody39_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody39)
+Private Sub GLOOBJ_LblBody39_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody39)
 End Sub
 
-Private Sub DatepickerLblBody40_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody40)
+Private Sub GLOOBJ_LblBody40_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody40)
 End Sub
 
-Private Sub DatepickerLblBody40_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody40)
+Private Sub GLOOBJ_LblBody40_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody40)
 End Sub
 
-Private Sub DatepickerLblBody41_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody41)
+Private Sub GLOOBJ_LblBody41_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody41)
 End Sub
 
-Private Sub DatepickerLblBody41_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody41)
+Private Sub GLOOBJ_LblBody41_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody41)
 End Sub
 
-Private Sub DatepickerLblBody42_Click()
- Call DatePicker_EventSelectDate(DatepickerLblBody42)
+Private Sub GLOOBJ_LblBody42_Click()
+ Call DatePicker_controls_event_select_date(GLOOBJ_LblBody42)
 End Sub
 
-Private Sub DatepickerLblBody42_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
- Call DatePicker_EventMouseMove(DatepickerLblBody42)
+Private Sub GLOOBJ_LblBody42_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
+ Call DatePicker_controls_event_mouse_move(GLOOBJ_LblBody42)
 End Sub
 
-'Methods Core Class
-Private Sub DatePicker_SetControls(ByVal Frm As Object, Optional cFirstDay As Long = VBA.vbMonday)
-  'BUILDS A FRAME WITH ALL CONTROLS FOR CALENDAR
-  ' [x]  A Header Label for Month, Year.
-  ' [x]  A SpinButton to navigate across Months/Years.
-  ' [x]  A SubHeader Label for Today: dd/mm/yy.
-  ' [x]  A SubHeader Label for Each first letter of the day.
-  ' [x]  A Frame for all Days.
-  ' [x]  And all labels for all Days.
+
+
+' METHODS PRIVATE -------------------------------------------------------------------'
+' CORE CONTROLS METHODS LIST (PRIVATE) ----------------------------------------------'
+Private Sub DatePicker_open( _
+  ByVal DFRM As Object, _
+  ByVal DEnuJustForm As DPC_JustForm, _
+  ByVal DVbaFirstDay As VbDayOfWeek, _
+  ByVal DControl As Object, _
+  ByVal DEnuAlign As DPC_Alignment, _
+  ByVal DxlBaseColor As XlRgbColor, _
+  ByVal DBooMsgBox As Boolean)
+'  Optional DxlBaseColor As Long = 4616993, _
+
+  #If Debugging Then
+    Call Debug_assert((DFRM Is Nothing Or DControl Is Nothing), "DatePicker")
+  #End If
   
-  Dim i As Integer
-  Dim j As Single
-  Dim col As Single
-  Dim row As Single
+  ' If second call, DPC already exists, so, close it
+  If GLOBooInstance Then Call DatePicker_close: GoTo EH
   
-  If Frm Is Nothing Then GoTo DP_SC
+  ' Create and Add DPC to Form controls
+  Call DatePicker_core_add(DFRM, DEnuJustForm, DVbaFirstDay)
   
-  On Error GoTo DP_SC
-  With Frm
-    Call .Controls.Add("Forms.Frame.1", "DatepickerFrame1", False)
-    With .Controls("DatepickerFrame1") 'FrameCal1
-      .Width = 114
-      .Height = 130
-      .BorderStyle = fmBorderStyleSingle
-    
-      Call .Controls.Add("Forms.Label.1", "DatepickerLblHead1")
-      Set DatepickerLblHead2 = .Controls.Add("Forms.Label.1", "DatepickerLblHead2")
-      
-      Set DatepickerSpinHead1 = .Controls.Add("Forms.SpinButton.1", "DatepickerSpinHead1")
-      Set DatepickerSpinHead2 = .Controls.Add("Forms.SpinButton.1", "DatepickerSpinHead2")
-    
-      Set DatepickerFrame2 = .Controls.Add("Forms.Frame.1", "DatepickerFrame2")
-      
-      With DatepickerSpinHead1
-        .Height = 12 * 0.5
-        .Width = .Parent.Width * 0.2
-        .Left = .Parent.Width - (.Width + 10)
-        .Delay = 50
-        .Min = 0
-        .Max = 13
-      End With
-      With DatepickerSpinHead2
-        .Height = 12 * 0.5
-        .Width = .Parent.Width * 0.2
-        .Left = DatepickerSpinHead1.Left
-        .Top = DatepickerSpinHead1.Top + DatepickerSpinHead1.Height
-        .Delay = 50
-        .Min = 0 '1900
-        .Max = 9999
-      End With
-    
-      With .Controls("DatepickerLblHead1")
-        .Height = 12
-        .Width = .Parent.Width
-        .Caption = "     Enero, 2020"
-        .Font.Bold = True
-      End With
-      With .Controls("DatepickerLblHead2")
-        .Caption = "     Hoy: " & VBA.Date
-        .Top = 12
-        .BackStyle = fmBackStyleTransparent
-        .ForeColor = DaysColor ' VBA.RGB(100, 100, 100)
-      End With
-    
-      For i = 0 To 6
-        Call .Controls.Add("Forms.Label.1", "DatepickerLblHead3" & i)
-        With .Controls("DatepickerLblHead3" & i)
-          .Caption = VBA.UCase(VBA.Left(VBA.WeekdayName(VBA.Weekday(i + cFirstDay, cFirstDay)), 1)) '"      L   M    M   J    V    S   D"
-          .TextAlign = fmTextAlignCenter
-          .Font.Bold = True
-          If VBA.Weekday(i + cFirstDay, cFirstDay) = VBA.vbSaturday Then .ForeColor = VBA.vbRed
-          .BackStyle = fmBackStyleTransparent
-          .Height = 9 '10.5
-          .Width = 12 'FrameCal1.Width + 4
-          .Left = 9 + (i * .Width * 1.15) '-2
-          .Top = 24
-        End With
-      Next i
-      
-      Call .ZOrder(0)
-    End With
-    
-    With DatepickerFrame2
-      Set DatepickerLblBody1 = .Controls.Add("Forms.Label.1", "DatepickerLblBody1")
-      Set DatepickerLblBody2 = .Controls.Add("Forms.Label.1", "DatepickerLblBody2")
-      Set DatepickerLblBody3 = .Controls.Add("Forms.Label.1", "DatepickerLblBody3")
-      Set DatepickerLblBody4 = .Controls.Add("Forms.Label.1", "DatepickerLblBody4")
-      Set DatepickerLblBody5 = .Controls.Add("Forms.Label.1", "DatepickerLblBody5")
-      Set DatepickerLblBody6 = .Controls.Add("Forms.Label.1", "DatepickerLblBody6")
-      Set DatepickerLblBody7 = .Controls.Add("Forms.Label.1", "DatepickerLblBody7")
-      
-      Set DatepickerLblBody8 = .Controls.Add("Forms.Label.1", "DatepickerLblBody8")
-      Set DatepickerLblBody9 = .Controls.Add("Forms.Label.1", "DatepickerLblBody9")
-      Set DatepickerLblBody10 = .Controls.Add("Forms.Label.1", "DatepickerLblBody10")
-      Set DatepickerLblBody11 = .Controls.Add("Forms.Label.1", "DatepickerLblBody11")
-      Set DatepickerLblBody12 = .Controls.Add("Forms.Label.1", "DatepickerLblBody12")
-      Set DatepickerLblBody13 = .Controls.Add("Forms.Label.1", "DatepickerLblBody13")
-      Set DatepickerLblBody14 = .Controls.Add("Forms.Label.1", "DatepickerLblBody14")
-      
-      Set DatepickerLblBody15 = .Controls.Add("Forms.Label.1", "DatepickerLblBody15")
-      Set DatepickerLblBody16 = .Controls.Add("Forms.Label.1", "DatepickerLblBody16")
-      Set DatepickerLblBody17 = .Controls.Add("Forms.Label.1", "DatepickerLblBody17")
-      Set DatepickerLblBody18 = .Controls.Add("Forms.Label.1", "DatepickerLblBody18")
-      Set DatepickerLblBody19 = .Controls.Add("Forms.Label.1", "DatepickerLblBody19")
-      Set DatepickerLblBody20 = .Controls.Add("Forms.Label.1", "DatepickerLblBody20")
-      Set DatepickerLblBody21 = .Controls.Add("Forms.Label.1", "DatepickerLblBody21")
-      
-      Set DatepickerLblBody22 = .Controls.Add("Forms.Label.1", "DatepickerLblBody22")
-      Set DatepickerLblBody23 = .Controls.Add("Forms.Label.1", "DatepickerLblBody23")
-      Set DatepickerLblBody24 = .Controls.Add("Forms.Label.1", "DatepickerLblBody24")
-      Set DatepickerLblBody25 = .Controls.Add("Forms.Label.1", "DatepickerLblBody25")
-      Set DatepickerLblBody26 = .Controls.Add("Forms.Label.1", "DatepickerLblBody26")
-      Set DatepickerLblBody27 = .Controls.Add("Forms.Label.1", "DatepickerLblBody27")
-      Set DatepickerLblBody28 = .Controls.Add("Forms.Label.1", "DatepickerLblBody28")
-      
-      Set DatepickerLblBody29 = .Controls.Add("Forms.Label.1", "DatepickerLblBody29")
-      Set DatepickerLblBody30 = .Controls.Add("Forms.Label.1", "DatepickerLblBody30")
-      Set DatepickerLblBody31 = .Controls.Add("Forms.Label.1", "DatepickerLblBody31")
-      Set DatepickerLblBody32 = .Controls.Add("Forms.Label.1", "DatepickerLblBody32")
-      Set DatepickerLblBody33 = .Controls.Add("Forms.Label.1", "DatepickerLblBody33")
-      Set DatepickerLblBody34 = .Controls.Add("Forms.Label.1", "DatepickerLblBody34")
-      Set DatepickerLblBody35 = .Controls.Add("Forms.Label.1", "DatepickerLblBody35")
-      
-      Set DatepickerLblBody36 = .Controls.Add("Forms.Label.1", "DatepickerLblBody36")
-      Set DatepickerLblBody37 = .Controls.Add("Forms.Label.1", "DatepickerLblBody37")
-      Set DatepickerLblBody38 = .Controls.Add("Forms.Label.1", "DatepickerLblBody38")
-      Set DatepickerLblBody39 = .Controls.Add("Forms.Label.1", "DatepickerLblBody39")
-      Set DatepickerLblBody40 = .Controls.Add("Forms.Label.1", "DatepickerLblBody40")
-      Set DatepickerLblBody41 = .Controls.Add("Forms.Label.1", "DatepickerLblBody41")
-      Set DatepickerLblBody42 = .Controls.Add("Forms.Label.1", "DatepickerLblBody42")
-      
-      .Top = 35
-      .Left = -1
-      col = 9 '10
-      row = 5 '40
-      j = 1
-      For i = 1 To 42
-        With .Controls("DatepickerLblBody" & i)
-          .Caption = i
-          .Width = 12
-          .Height = 12
-          .TextAlign = fmTextAlignCenter
-          .Top = row '10
-          .Left = col  '(i * 12) + 5 ' (.Width + 4)
-          .BackStyle = fmBackStyleTransparent
-          .ForeColor = cDayForeColor ' VBA.RGB(100, 100, 100)
-          .Tag = i
-          
-          If (i Mod 7) = 0 Then
-            col = 9
-            row = row + .Height * 1.15
-            j = 1
-            .ForeColor = VBA.RGB(255, 100, 100) ' VBA.vbRed
-          Else
-            col = 9 + (j * .Width * 1.15) 'col + 1
-            j = j + 1
-          End If
-        End With
-      Next i
-    End With
-  End With
-    
-  Call DatePicker_InicializaFormularioCalendario(Frm)
-  cInstance = True
+  ' Show DPC
+  Call DatePicker_core_use(DEnuJustForm, DControl, DEnuAlign, DxlBaseColor, DBooMsgBox)
 
-DP_SC:
-  On Error GoTo 0
-End Sub
-
-Private Sub DatePicker_close(ByVal dFrm As Object)
-  If Not DatepickerFrame2 Is Nothing Then
-    Let dFrm.Controls("DatepickerFrame1").Visible = False
-    Call dFrm.Controls.Remove("DatepickerFrame1")
+EH:
+  If Not VBA.Err.Number = 0 Then
+    Debug.Print VBA.Err.Description
+    On Error GoTo -1
+    Call VBA.Err.Clear
   End If
-  Call DatePicker_reset
+
 End Sub
 
-Private Sub DatePicker_reset()
-  Set DatepickerFrame2 = Nothing
+Private Sub DatePicker_close()
   
-  Set DatepickerLblHead2 = Nothing
+  Dim DPCParent As Object
   
-  Set DatepickerSpinHead1 = Nothing
-  Set DatepickerSpinHead2 = Nothing
+  On Error GoTo EH
+  If GLOOBJ_FraDatepicker2 Is Nothing Then GoTo EH
+  Set DPCParent = GLOOBJ_FraDatepicker1.Parent
+  Let GLOOBJ_FraDatepicker1.Visible = False
+  Call DPCParent.Controls.Remove("DatepickerFrame1")
+  Call DatePicker_core_reset
   
-  Set DatepickerLblBody1 = Nothing
-  Set DatepickerLblBody2 = Nothing
-  Set DatepickerLblBody3 = Nothing
-  Set DatepickerLblBody4 = Nothing
-  Set DatepickerLblBody5 = Nothing
-  Set DatepickerLblBody6 = Nothing
-  Set DatepickerLblBody7 = Nothing
+  #If Debugging Then
+    Dim cC As Object
+    For Each cC In DPCParent.Controls
+      Debug.Print cC.Name
+    Next cC
+    Set cC = Nothing
+  #End If
   
-  Set DatepickerLblBody8 = Nothing
-  Set DatepickerLblBody9 = Nothing
-  Set DatepickerLblBody10 = Nothing
-  Set DatepickerLblBody11 = Nothing
-  Set DatepickerLblBody12 = Nothing
-  Set DatepickerLblBody13 = Nothing
-  Set DatepickerLblBody14 = Nothing
-  
-  Set DatepickerLblBody15 = Nothing
-  Set DatepickerLblBody16 = Nothing
-  Set DatepickerLblBody17 = Nothing
-  Set DatepickerLblBody18 = Nothing
-  Set DatepickerLblBody19 = Nothing
-  Set DatepickerLblBody20 = Nothing
-  Set DatepickerLblBody21 = Nothing
-  
-  Set DatepickerLblBody22 = Nothing
-  Set DatepickerLblBody23 = Nothing
-  Set DatepickerLblBody24 = Nothing
-  Set DatepickerLblBody25 = Nothing
-  Set DatepickerLblBody26 = Nothing
-  Set DatepickerLblBody27 = Nothing
-  Set DatepickerLblBody28 = Nothing
-  
-  Set DatepickerLblBody29 = Nothing
-  Set DatepickerLblBody30 = Nothing
-  Set DatepickerLblBody31 = Nothing
-  Set DatepickerLblBody32 = Nothing
-  Set DatepickerLblBody33 = Nothing
-  Set DatepickerLblBody34 = Nothing
-  Set DatepickerLblBody35 = Nothing
-  
-  Set DatepickerLblBody36 = Nothing
-  Set DatepickerLblBody37 = Nothing
-  Set DatepickerLblBody38 = Nothing
-  Set DatepickerLblBody39 = Nothing
-  Set DatepickerLblBody40 = Nothing
-  Set DatepickerLblBody41 = Nothing
-  Set DatepickerLblBody42 = Nothing
-  
-  cInstance = False
+  Set DPCParent = Nothing
+    
+EH:
+  Set DPCParent = Nothing
+  If Not VBA.Err.Number = 0 Then
+    Debug.Print VBA.Err.Description
+    Call VBA.Err.Clear
+  End If
+
 End Sub
 
+Private Sub DatePicker_controls_event_select_date(ByVal CtrlLbl As MSForms.Label, Optional BooToday As Boolean = False)
+  
+  On Error GoTo EH
+  Let CtrlLbl.ForeColor = GLOLngDayForeColor
+  Let GLOOBJ_FraDatepicker2.Parent.Visible = False
+  Let GLODatSelected = IIf(BooToday, VBA.Date(), VBA.Format(CtrlLbl.Caption, "00") & "/" & VBA.Format(GLOLngMonths, "00") & "/" & GLOLngYears)
+  If GLOBooMsgBox Then Call VBA.MsgBox("Fecha: " & IIf(BooToday, VBA.Date(), VBA.Format(CtrlLbl.Caption, "00") & "/" & VBA.Format(GLOLngMonths, "00") & "/" & GLOLngYears))
+  If Not BooToday Then Call DatePicker_core_remark_selected_day(CtrlLbl)
+  
+  If Not GLOOBJ_CtlReceptor Is Nothing Then
+    Select Case VBA.TypeName(GLOOBJ_CtlReceptor)
+      Case "TextBox"
+        GLOOBJ_CtlReceptor.Text = GLODatSelected
+      Case "ComboBox", "Range"
+        GLOOBJ_CtlReceptor.Value = GLODatSelected
+      Case "Label"
+        GLOOBJ_CtlReceptor.Caption = GLODatSelected
+    End Select
+  End If
+  
+  If GLOBooJustForm Then
+    Call VBA.Unload(GLOOBJ_FraDatepicker1.Parent)
+  Else
+    Call DatePicker_close
+  End If
+
+EH:
+
+End Sub
+
+Private Sub DatePicker_controls_event_mouse_move(ByVal CtrlLbl As MSForms.Label)
+  
+  Dim Ctrl As MSForms.Label
+
+  On Error GoTo EH
+  For Each Ctrl In GLOOBJ_FraDatepicker2.Controls
+    Let Ctrl.ForeColor = IIf((VBA.CLng(Ctrl.Tag) Mod 7) = 0, GLOLngDaySunForecolor, GLOLngCustomDayForeColor)
+  Next Ctrl
+  Let CtrlLbl.ForeColor = IIf((VBA.CLng(CtrlLbl.Tag) Mod 7) = 0, VBA.vbRed, VBA.vbBlack)
+
+EH:
+
+End Sub
+
+
+
+' CORE METHODS LIST PRIVATE ---------------------------------------------------------'
 ''********************************** NO MODIFICAR SI NO SABE **********************************
 ''*************************************|||||||||||||||||||*************************************
 ''***************************************|||||||||||||||***************************************
@@ -822,45 +753,52 @@ End Sub
 
 ' ! Muchas gracias y espero lo disfruten ! ---------------------------------------------------
 
-Private Sub DatePicker_InicializaFormularioCalendario(ByVal dFrm As MSForms.UserForm)
-  With dFrm
-    .Controls("DatepickerFrame1").Controls("DatepickerLblHead1").Caption = "     " & VBA.StrConv(VBA.MonthName(cMonths), vbProperCase) & ", " & cYears
-  End With
-  With DatepickerFrame2.Controls("DatepickerLblBody" & cDays)
-    DayBorderStyle = .BorderStyle
-    DayBorderColor = .BorderColor
-    DayBackColor = .BackColor
-    DayForeColor = .ForeColor
+Private Sub DatePicker_core_InicializaFormularioCalendario()
+  
+  On Error GoTo EH
+  Let GLOOBJ_FraDatepicker1.Controls("DatepickerLblHead1").Caption = VBA.Space$(5) & VBA.StrConv(VBA.MonthName(GLOLngMonths), vbProperCase) & ", " & GLOLngYears
+  With GLOOBJ_FraDatepicker2.Controls("GLOOBJ_LblBody" & GLOLngDays)
+    Let GLOLngDayBorderStyle = .BorderStyle
+    Let GLOLngDayBorderColor = .BorderColor
+    Let GLOLngDayBackColor = .BackColor
+    Let GLOLngDayForeColor = .ForeColor
   End With
   
-  DatepickerSpinHead1.Value = VBA.Month(VBA.Date())
-  DatepickerSpinHead2.Value = VBA.Year(VBA.Date())
-  Call DatePicker_CargarLosDias(cYears, cMonths)
+  Let GLOOBJ_SpinHead1.Value = VBA.Month(VBA.Date())
+  Let GLOOBJ_SpinHead2.Value = VBA.Year(VBA.Date())
+  Call DatePicker_core_CargarLosDias(GLOLngYears, GLOLngMonths)
+EH:
+
 End Sub
 
-Private Sub DatePicker_CargarLosDias(ByVal Ano As Long, ByVal Mes As Long)
+Private Sub DatePicker_core_CargarLosDias(ByVal Anho As Long, ByVal Mes As Long)
+  
   Dim FechaDelPrimerDia As Date
   Dim FechaDelUltimoDia As Date
   Dim DiaSemanaPrimerDia As Long
-  Dim VariableControl As Control
+  Dim VariableControl As MSForms.Control
   Dim Contador As Long
+  
+  On Error GoTo EH
+  Let FechaDelPrimerDia = VBA.DateSerial(Anho, Mes, 1)
+  Let FechaDelUltimoDia = Application.WorksheetFunction.EoMonth(VBA.DateSerial(Anho, Mes, 1), 0)
+  Let DiaSemanaPrimerDia = Application.WorksheetFunction.Weekday(FechaDelPrimerDia, 2)
+  Let Contador = 1
 
-  FechaDelPrimerDia = VBA.DateSerial(Ano, Mes, 1)
-  FechaDelUltimoDia = Application.WorksheetFunction.EoMonth(VBA.DateSerial(Ano, Mes, 1), 0)
-  DiaSemanaPrimerDia = Application.WorksheetFunction.Weekday(FechaDelPrimerDia, 2)
-  Contador = 1
-
-  For Each VariableControl In DatepickerFrame2.Controls
-    VariableControl.Visible = (VariableControl.Tag >= DiaSemanaPrimerDia And Contador <= VBA.Day(FechaDelUltimoDia))
-    If (Contador = VBA.Day(VBA.Date())) And Not cMarkedDay Then
-      cUnDays = Contador + DiaSemanaPrimerDia - 1
-      cMarkedDay = True
+  For Each VariableControl In GLOOBJ_FraDatepicker2.Controls
+    Let VariableControl.Visible = (VariableControl.Tag >= DiaSemanaPrimerDia And Contador <= VBA.Day(FechaDelUltimoDia))
+    If (Contador = VBA.Day(VBA.Date())) And Not GLOBooMarkedDay Then
+      Let GLOLngUnDays = Contador + DiaSemanaPrimerDia - 1
+      Let GLOBooMarkedDay = True
     End If
     If VariableControl.Tag >= DiaSemanaPrimerDia And Contador <= VBA.Day(FechaDelUltimoDia) Then
-      VariableControl.Caption = Contador
-      Contador = Contador + 1
+      Let VariableControl.Caption = Contador
+      Let Contador = Contador + 1
     End If
   Next VariableControl
+  
+EH:
+
 End Sub
 ''********************************** NO MODIFICAR SI NO SABE **********************************
 ''*************************************|||||||||||||||||||*************************************
@@ -869,212 +807,513 @@ End Sub
 ''*******************************************|||||||*******************************************
 ' ANDRÃ‰S ROJAS MONCADA'S CALENDAR CORE ALGORITHM                                ----- o ------
 
-
-Private Sub DatePicker_ChangeMonthYear(ByVal cmValue As Long, Optional cmMonthYear As Boolean = False)
-  With DatepickerSpinHead1
+Private Sub DatePicker_core_change_month_year(ByVal DLngValue As Long, Optional DBooMonthYear As Boolean = False)
+  
+  On Error GoTo EH
+  With GLOOBJ_SpinHead1
     If Not (VBA.IsNull(.Value)) Then
-      If Not cmMonthYear Then 'Monts
-        With DatepickerSpinHead1
-          If cmValue > 12 Then
-            .Value = 1: cYears = cYears + 1
-            If cYears >= 9999 Then cYears = 9999
+      If Not DBooMonthYear Then 'Monts
+        With GLOOBJ_SpinHead1
+          If DLngValue > 12 Then
+            Let .Value = 1: GLOLngYears = GLOLngYears + 1
+            If GLOLngYears >= 9999 Then GLOLngYears = 9999
           End If
-          If cmValue < 1 Then
-            .Value = 12: cYears = cYears - 1
-            If cYears <= 1900 Then cYears = 1900
+          If DLngValue < 1 Then
+            Let .Value = 12: GLOLngYears = GLOLngYears - 1
+            If GLOLngYears <= 1900 Then GLOLngYears = 1900
           End If
-          cMonths = .Value
-          .Parent.Controls("DatepickerLblHead1").Caption = "     " & VBA.StrConv(VBA.MonthName(cMonths), vbProperCase) & ", " & cYears
+          Let GLOLngMonths = .Value
+          Let .Parent.Controls("DatepickerLblHead1").Caption = VBA.Space$(5) & VBA.StrConv(VBA.MonthName(GLOLngMonths), vbProperCase) & ", " & GLOLngYears
         End With
       Else 'Years
-        With DatepickerSpinHead2
-          If cmValue >= 9999 Then
-            cYears = 9999
-          ElseIf cmValue <= 1900 Then
-            cYears = 1900
+        With GLOOBJ_SpinHead2
+          If DLngValue >= 9999 Then
+            Let GLOLngYears = 9999
+          ElseIf DLngValue <= 1900 Then
+            Let GLOLngYears = 1900
           Else
-            cYears = .Value
+            Let GLOLngYears = .Value
           End If
-          .Parent.Controls("DatepickerLblHead1").Caption = "     " & VBA.StrConv(VBA.MonthName(cMonths), vbProperCase) & ", " & cYears
+          Let .Parent.Controls("DatepickerLblHead1").Caption = VBA.Space$(5) & VBA.StrConv(VBA.MonthName(GLOLngMonths), vbProperCase) & ", " & GLOLngYears
         End With
       End If
 
-      Call DatePicker_CargarLosDias(cYears, cMonths)
-      Call DatePicker_RemarkTheDay
+      Call DatePicker_core_CargarLosDias(GLOLngYears, GLOLngMonths)
+      Call DatePicker_core_remark_the_day
     End If
   End With
+
+EH:
+
 End Sub
 
-Private Sub DatePicker_RemarkTheDay()
-  With DatepickerFrame2.Controls("DatepickerLblBody" & cUnDays)
-    If DatepickerSpinHead1.Value = VBA.Month(VBA.Date()) And cYears = VBA.Year(VBA.Date()) Then
-      .BorderStyle = fmBorderStyleSingle
-      .BorderColor = DayBorderColor
-      .BackColor = cDayBackColor
-      .ForeColor = cDayForeColor
-      .BackStyle = fmBackStyleOpaque
+Private Sub DatePicker_core_remark_the_day()
+  
+  On Error GoTo EH
+  With GLOOBJ_FraDatepicker2.Controls("GLOOBJ_LblBody" & GLOLngUnDays)
+    If GLOOBJ_SpinHead1.Value = VBA.Month(VBA.Date()) And GLOLngYears = VBA.Year(VBA.Date()) Then
+      Let .BorderStyle = fmBorderStyleSingle
+      Let .BorderColor = GLOLngDayBorderColor
+      Let .BackColor = GLOLngCustomDayBackColor
+      Let .ForeColor = GLOLngCustomDayForeColor
+      Let .BackStyle = fmBackStyleOpaque
     Else
-      .BorderStyle = DayBorderStyle
-      .BorderColor = DayBorderColor
-      .BackColor = DayBackColor
-      .ForeColor = DayForeColor
-      .BackStyle = fmBackStyleTransparent
+      Let .BorderStyle = GLOLngDayBorderStyle
+      Let .BorderColor = GLOLngDayBorderColor
+      Let .BackColor = GLOLngDayBackColor
+      Let .ForeColor = GLOLngDayForeColor
+      Let .BackStyle = fmBackStyleTransparent
     End If
   End With
+
+EH:
+
 End Sub
 
-Private Sub DatePicker_RemarkSelectedDay(ByVal cLblDay As MSForms.Label)
-  Dim ctrl As MSForms.Label
+Private Sub DatePicker_core_remark_selected_day(ByVal DCtrlLblDay As MSForms.Label)
+  
+  Dim Ctrl As MSForms.Label
 
-  For Each ctrl In DatepickerFrame2.Controls
-    With ctrl
-      .ForeColor = DayForeColor
-      .BackStyle = fmBackStyleTransparent
+  On Error GoTo EH
+  For Each Ctrl In GLOOBJ_FraDatepicker2.Controls
+    With Ctrl
+      Let .ForeColor = GLOLngDayForeColor
+      Let .BackStyle = fmBackStyleTransparent
     End With
-  Next ctrl
-  With DatepickerFrame2.Controls("DatepickerLblBody" & cUnDays)
-    .ForeColor = DayForeColor
-    .BackStyle = fmBackStyleTransparent
+  Next Ctrl
+  With GLOOBJ_FraDatepicker2.Controls("GLOOBJ_LblBody" & GLOLngUnDays)
+    Let .ForeColor = GLOLngDayForeColor
+    Let .BackStyle = fmBackStyleTransparent
   End With
-  With cLblDay
-    .BackColor = cDayBackColor
-    .ForeColor = cDayForeColor ' VBA.vbWhite
-    .BackStyle = fmBackStyleOpaque
+  With DCtrlLblDay
+    Let .BackColor = GLOLngCustomDayBackColor
+    Let .ForeColor = GLOLngCustomDayForeColor ' VBA.vbWhite
+    Let .BackStyle = fmBackStyleOpaque
   End With
+
+EH:
+
 End Sub
 
-Private Sub DatePicker_EventSelectDate(ByVal cLbl As MSForms.Label, Optional cToday As Boolean = False)
-  cLbl.ForeColor = DayForeColor
-  DatepickerFrame2.Parent.Visible = False 'FrameCal1.Visible = False
-  CDateSelected = IIf(cToday, VBA.Date(), VBA.Format(cLbl.Caption, "00") & "/" & VBA.Format(cMonths, "00") & "/" & cYears)
-  If cMsgBox Then Call VBA.MsgBox("Fecha: " & IIf(cToday, VBA.Date(), VBA.Format(cLbl.Caption, "00") & "/" & VBA.Format(cMonths, "00") & "/" & cYears))
-  If Not cToday Then Call DatePicker_RemarkSelectedDay(cLbl)
-  If Not cReceptorControl Is Nothing Then
-    Select Case VBA.TypeName(cReceptorControl)
-      Case "TextBox"
-        cReceptorControl.Text = CDateSelected
-      Case "ComboBox", "Range"
-        cReceptorControl.Value = CDateSelected
-      Case "Label"
-        cReceptorControl.Caption = CDateSelected
-    End Select
-  End If
-  If cJustForm Then
-    Unload DatepickerFrame2.Parent.Parent
-  Else
-    Call DatePicker_close(DatepickerFrame2.Parent.Parent)
-  End If
-End Sub
-
-Private Sub DatePicker_EventMouseMove(ByVal cLbl As MSForms.Label)
-  Dim ctrl As MSForms.Label
-
-  For Each ctrl In DatepickerFrame2.Controls
-    ctrl.ForeColor = IIf((VBA.CLng(ctrl.Tag) Mod 7) = 0, DaySunForecolor, cDayForeColor)
-  Next ctrl
-  cLbl.ForeColor = IIf((VBA.CLng(cLbl.Tag) Mod 7) = 0, VBA.vbRed, VBA.vbBlack)
-End Sub
-
-Private Sub DatePicker_ChangeColors(ByVal FrameCal1 As MSForms.Frame)
-  With FrameCal1
-    .Controls("DatepickerLblHead1").ForeColor = cDayForeColor
-    .Controls("DatepickerLblHead1").BackColor = cDayBackColor
+Private Sub DatePicker_core_change_colors()
+  
+  On Error GoTo EH
+  With GLOOBJ_FraDatepicker1
+    Let .Controls("DatepickerLblHead1").ForeColor = GLOLngCustomDayForeColor
+    Let .Controls("DatepickerLblHead1").BackColor = GLOLngCustomDayBackColor
   End With
+
+EH:
+
 End Sub
 
-Private Sub DatePicker_Add(ByVal dFrm As MSForms.UserForm, Optional dFirstDay As Long = VBA.vbMonday)
+Private Sub DatePicker_core_add(ByVal DFRM As Object, ByVal DEnuJustForm As DPC_JustForm, ByVal DVbaFirstDay As VbDayOfWeek)
+  
+  On Error GoTo EH
+  Call DatePicker_core_set_controls(DFRM, DEnuJustForm, DVbaFirstDay)
+
+EH:
+
+End Sub
+
+Private Sub DatePicker_core_use( _
+  ByVal DEnuJustForm As DPC_JustForm, _
+  ByVal DControl As Object, _
+  ByVal DEnuAlign As DPC_Alignment, _
+  ByVal DxlBaseColor As XlRgbColor, _
+  ByVal DBooMsgBox As Boolean)
+
+'  Optional DxlBaseColor As Long = 4616993
+
+  Dim LngHeight As Long, LngWidth As Long
+  'Dim PosCoord As positinons
+  
+  On Error GoTo EH
+  Let GLOLngDayBorderColor = DxlBaseColor
+  Let GLOLngCustomDayBackColor = DxlBaseColor
+  Let GLOLngCustomDayForeColor = DxlBaseColor + GLOLNG_DAY_SIDE_COLOR ' Triade, soft color
+
+  Let GLOBooJustForm = DEnuJustForm
+  Let GLOBooMsgBox = DBooMsgBox
+  
+  On Error Resume Next
+  With GLOOBJ_FraDatepicker1.Parent ' TheForm or object parent
     
-  On Error Resume Next
-  If dFrm Is Nothing Then GoTo DPA
-  Call DatePicker_SetControls(dFrm, dFirstDay)
+    Set GLOOBJ_CtlReceptor = DControl
+    If DEnuJustForm Then
+      
+      Let .Controls("DatepickerFrame1").Left = 0
+      Let .Controls("DatepickerFrame1").Top = 0
+      Let .Controls("DatepickerFrame1").Visible = True ' Not .Controls("DatepickerFrame1").Visible
+      Let LngWidth = .Controls("DatepickerFrame1").Width
+      Let LngHeight = .Controls("DatepickerFrame1").Height
+      Let .Width = LngWidth * 1.09
+      Let .Height = LngHeight * 1.2
+      If VBA.TypeName(DControl) = "Range" Then
+        ' This is a complex task, because coordinates of Excel sheets are very variables _
+          but is possible with some algorithms like Form Positioner by Pearson Software Consulting Services. _
+          More information: http://www.cpearson.com/excel/FormPosition.htm
+        ' Here will apply some logical operations to aproximatelly obtain the cell left and top to our DPC as UserForm.
+        Let .StartUpPosition = 0
+        Let .Left = (DControl.Left + DControl.Width) * 1.13
+        Let .Top = (.Height * 0.96) + DControl.Top + DControl.Height
+      End If
+      Call DatePicker_core_change_colors
+      Let .Caption = "DatePickerClass"
+      Call VBA.Load(GLOOBJ_FraDatepicker1.Parent)
+      Call .Show
+    
+    Else
+      
+      If Not DControl Is Nothing Then
+        Let .Controls("DatepickerFrame1").Left = Datepicker_asset_get_horizontal_align(DControl, DEnuAlign)
+        Let .Controls("DatepickerFrame1").Top = Datepicker_asset_get_vertical_align(DControl)
+        Let .Controls("DatepickerFrame1").Visible = True
+        Call DatePicker_core_change_colors
+      End If
+    
+    End If
+    If Not GLOOBJ_FraDatepicker2 Is Nothing Then Let GLOOBJ_FraDatepicker1.Visible = True
+  
+  End With
 
-DPA:
-  On Error GoTo 0
+EH:
+
 End Sub
 
-Private Function DatePicker_Use( _
-  ByVal TheForm As Object, _
-  Optional clJustForm As Boolean = False, _
-  Optional clControl As Object, _
-  Optional clAlign As String = "Left", _
-  Optional clBaseColor As Long = 4616993, _
-  Optional clMsgBox As Boolean = False) As Date
-
-  'Optional clControl As MSForms.Control,
-  Dim fHeight As Single, fWidth As Single
-  'Dim cc As Range
-  'Dim tf As UserForm1
+Private Sub DatePicker_core_set_controls(ByVal DFRM As Object, ByVal DEnuJustForm As DPC_JustForm, ByVal DVbaFirstDay As VbDayOfWeek)
   
-  DayBorderColor = clBaseColor
-  cDayBackColor = clBaseColor
-  cDayForeColor = clBaseColor + cDaySideColor 'Triade, soft color
-
-  cJustForm = clJustForm
-  cMsgBox = clMsgBox
+  'BUILDS A FRAME WITH ALL CONTROLS FOR CALENDAR
+  ' [x]  A Header Label for Month, Year.
+  ' [x]  A SpinButton to navigate across Months/Years.
+  ' [x]  A SubHeader Label for Today: dd/mm/yy.
+  ' [x]  A SubHeader Label for Each first letter of the day.
+  ' [x]  A Frame for all Days.
+  ' [x]  And all labels for all Days.
+  Dim ObjFrm As Object
   
-  On Error Resume Next
-  With TheForm
-    If clJustForm Then
-      .Controls("DatepickerFrame1").Left = 0
-      .Controls("DatepickerFrame1").Top = 0
-      .Controls("DatepickerFrame1").Visible = True ' Not .Controls("DatepickerFrame1").Visible
-      fWidth = .Controls("DatepickerFrame1").Width
-      fHeight = .Controls("DatepickerFrame1").Height
-      .Width = fWidth * 1.09
-      .Height = fHeight * 1.2
-      If VBA.TypeName(clControl) = "Range" Then
-        .StartUpPosition = 0
-        .Left = clControl.Left
-        .Top = .Height + clControl.Top + clControl.Height
-      End If
-      Call DatePicker_ChangeColors(.Controls("DatepickerFrame1"))
-      .Caption = "DatePickerClass"
-      Load TheForm
-      .Show
-    Else
-      If Not clControl Is Nothing Then
-        Select Case VBA.LCase(clAlign)
-          Case "right"
-            .Controls("DatepickerFrame1").Left = (clControl.Left + clControl.Width) - .Controls("DatepickerFrame1").Width
-          Case "center"
-            .Controls("DatepickerFrame1").Left = (clControl.Left + (clControl.Width / 2)) - (.Controls("DatepickerFrame1").Width / 2)
-          Case Else
-            .Controls("DatepickerFrame1").Left = clControl.Left
-        End Select
-        Set cReceptorControl = clControl
-        .Controls("DatepickerFrame1").Top = clControl.Top + clControl.Height ' + 2
-        .Controls("DatepickerFrame1").Visible = True 'Not FrameCal1.Visible
-        Call DatePicker_ChangeColors(.Controls("DatepickerFrame1"))
-      End If
-    End If
-    If Not DatepickerFrame2 Is Nothing Then .Controls("DatepickerFrame1").Visible = True
-  End With
-  DatePicker_Use = CDateSelected
-End Function
-
-
-
-
-
-'METHODS PUBLIC
-'Interface DatePickerClass
-Public Function DatePicker( _
-  ByVal Frm As Object, _
-  Optional dJustForm As Boolean = False, _
-  Optional dFirstDay As Long = VBA.vbMonday, _
-  Optional dControl As Object, _
-  Optional dAlign As String = "Left", _
-  Optional dBaseColor As Long = 4616993, _
-  Optional dMsgBox As Boolean = False) As Date
+  Dim BooIsFrm As Boolean
+  Dim i As Integer
+  Dim j As Single, xCol As Single, xRow As Single
   
-  DatePicker = VBA.Format(VBA.Date(), "dd/mm/yy")
-  If Not Frm Is Nothing Then
-    If cInstance Then Call DatePicker_close(Frm): GoTo dp
-    Call DatePicker_Add(Frm, dFirstDay)
-    DatePicker = DatePicker_Use(Frm, dJustForm, dControl, dAlign, dBaseColor, dMsgBox)
+  ' Verifies required Form
+  If DFRM Is Nothing Then Call VBA.Err.Raise(CUSTOM_ERROR, "DPC::-set_controls", "¡A UserForm object is required!")
+  
+  
+  'Verifies if DFRM is a correct object
+  Let BooIsFrm = False
+  If VBA.UserForms.Count > 0 Then
+    For Each ObjFrm In VBA.UserForms
+      If VBA.TypeName(DFRM) = VBA.TypeName(ObjFrm) Then Let BooIsFrm = True: Exit For
+    Next ObjFrm
+    Set ObjFrm = Nothing
   End If
+  ' It is required that DPC parent object would be a UserForm
+  If Not BooIsFrm Then Call VBA.Err.Raise(CUSTOM_ERROR, "DPC::-set_controls", "¡A UserForm object is required!")
+  ' If DPC is required as a Form in a Excel's workbook, its object parent must be always a UserForm.
+  If DEnuJustForm = dpcAsForm And Not BooIsFrm Then Call VBA.Err.Raise(CUSTOM_ERROR, "DPC::-set_controls", "¡A UserForm object is required!")
+  
+  
+  ' Lets create the DPC
+  On Error GoTo EH
+  With DFRM
+    Set GLOOBJ_FraDatepicker1 = .Controls.Add("Forms.Frame.1", "DatepickerFrame1", False)
+    With GLOOBJ_FraDatepicker1 '.Controls("DatepickerFrame1")
+      Let .Width = 114
+      Let .Height = 130
+      Let .BorderStyle = fmBorderStyleSingle
+      
+      Call .Controls.Add("Forms.Label.1", "DatepickerLblHead1")
+      Set GLOOBJ_LblHead2 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblHead2")
+      
+      Set GLOOBJ_SpinHead1 = .Controls.Add("Forms.SpinButton.1", "GLOOBJ_SpinHead1")
+      Set GLOOBJ_SpinHead2 = .Controls.Add("Forms.SpinButton.1", "GLOOBJ_SpinHead2")
+      
+      Set GLOOBJ_FraDatepicker2 = .Controls.Add("Forms.Frame.1", "GLOOBJ_FraDatepicker2")
+      
+      ' Place the DPC layout
+      With GLOOBJ_SpinHead1
+        Let .Height = 12 * 0.5
+        Let .Width = .Parent.Width * 0.2
+        Let .Left = .Parent.Width - (.Width + 10)
+        Let .Delay = 50
+        Let .MIN = 0
+        Let .Max = 13
+      End With
+      With GLOOBJ_SpinHead2
+        Let .Height = 12 * 0.5
+        Let .Width = .Parent.Width * 0.2
+        Let .Left = GLOOBJ_SpinHead1.Left
+        Let .Top = GLOOBJ_SpinHead1.Top + GLOOBJ_SpinHead1.Height
+        Let .Delay = 50
+        Let .MIN = 0 '1900
+        Let .Max = 9999
+      End With
+    
+      With .Controls("DatepickerLblHead1")
+        Let .Height = 12
+        Let .Width = .Parent.Width
+        Let .Caption = "     Enero, 2020"
+        Let .Font.Bold = True
+      End With
+      With .Controls("GLOOBJ_LblHead2")
+        Let .Caption = VBA.Space$(5) & "Hoy: " & VBA.Date
+        Let .Top = 12
+        Let .BackStyle = fmBackStyleTransparent
+        Let .ForeColor = GLOLngDaysColor ' VBA.RGB(100, 100, 100)
+      End With
+      
+      For i = 0 To 6
+        Call .Controls.Add("Forms.Label.1", "DatepickerLblHead3" & i)
+        With .Controls("DatepickerLblHead3" & i)
+          Let .Caption = VBA.UCase(VBA.Left(VBA.WeekdayName(VBA.Weekday(i + DVbaFirstDay, DVbaFirstDay)), 1)) '"      L   M    M   J    V    S   D"
+          Let .TextAlign = fmTextAlignCenter
+          Let .Font.Bold = True
+          If VBA.Weekday(i + DVbaFirstDay, DVbaFirstDay) = VBA.vbSaturday Then .ForeColor = VBA.vbRed
+          Let .BackStyle = fmBackStyleTransparent
+          Let .Height = 9 '10.5
+          Let .Width = 12 'FrameCal1.Width + 4
+          Let .Left = 9 + (i * .Width * 1.15) '-2
+          Let .Top = 24
+        End With
+      Next i
+      
+      Call .ZOrder(0)
+    End With
+    
+    With GLOOBJ_FraDatepicker2
+      Set GLOOBJ_LblBody1 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody1")
+      Set GLOOBJ_LblBody2 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody2")
+      Set GLOOBJ_LblBody3 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody3")
+      Set GLOOBJ_LblBody4 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody4")
+      Set GLOOBJ_LblBody5 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody5")
+      Set GLOOBJ_LblBody6 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody6")
+      Set GLOOBJ_LblBody7 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody7")
 
-dp:
-  On Error GoTo 0
+      Set GLOOBJ_LblBody8 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody8")
+      Set GLOOBJ_LblBody9 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody9")
+      Set GLOOBJ_LblBody10 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody10")
+      Set GLOOBJ_LblBody11 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody11")
+      Set GLOOBJ_LblBody12 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody12")
+      Set GLOOBJ_LblBody13 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody13")
+      Set GLOOBJ_LblBody14 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody14")
+
+      Set GLOOBJ_LblBody15 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody15")
+      Set GLOOBJ_LblBody16 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody16")
+      Set GLOOBJ_LblBody17 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody17")
+      Set GLOOBJ_LblBody18 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody18")
+      Set GLOOBJ_LblBody19 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody19")
+      Set GLOOBJ_LblBody20 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody20")
+      Set GLOOBJ_LblBody21 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody21")
+
+      Set GLOOBJ_LblBody22 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody22")
+      Set GLOOBJ_LblBody23 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody23")
+      Set GLOOBJ_LblBody24 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody24")
+      Set GLOOBJ_LblBody25 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody25")
+      Set GLOOBJ_LblBody26 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody26")
+      Set GLOOBJ_LblBody27 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody27")
+      Set GLOOBJ_LblBody28 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody28")
+
+      Set GLOOBJ_LblBody29 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody29")
+      Set GLOOBJ_LblBody30 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody30")
+      Set GLOOBJ_LblBody31 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody31")
+      Set GLOOBJ_LblBody32 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody32")
+      Set GLOOBJ_LblBody33 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody33")
+      Set GLOOBJ_LblBody34 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody34")
+      Set GLOOBJ_LblBody35 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody35")
+
+      Set GLOOBJ_LblBody36 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody36")
+      Set GLOOBJ_LblBody37 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody37")
+      Set GLOOBJ_LblBody38 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody38")
+      Set GLOOBJ_LblBody39 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody39")
+      Set GLOOBJ_LblBody40 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody40")
+      Set GLOOBJ_LblBody41 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody41")
+      Set GLOOBJ_LblBody42 = .Controls.Add("Forms.Label.1", "GLOOBJ_LblBody42")
+      
+      Let .Top = 35
+      Let .Left = -1
+      Let xCol = 9 '10
+      Let xRow = 5 '40
+      Let j = 1
+      For i = 1 To 42
+        With .Controls("GLOOBJ_LblBody" & i)
+          Let .Caption = i
+          Let .Width = 12
+          Let .Height = 12
+          Let .TextAlign = fmTextAlignCenter
+          Let .Top = xRow '10
+          Let .Left = xCol '(i * 12) + 5 ' (.Width + 4)
+          Let .BackStyle = fmBackStyleTransparent
+          Let .ForeColor = GLOLngCustomDayForeColor ' VBA.RGB(100, 100, 100)
+          Let .Tag = i
+          
+          If (i Mod 7) = 0 Then
+            Let xCol = 9
+            Let xRow = xRow + .Height * 1.15
+            Let j = 1
+            Let .ForeColor = VBA.RGB(255, 100, 100) ' VBA.vbRed
+          Else
+            Let xCol = 9 + (j * .Width * 1.15) 'col + 1
+            Let j = j + 1
+          End If
+        End With
+      Next i
+    End With
+  End With
+  
+  Call DatePicker_core_InicializaFormularioCalendario
+  Let GLOBooInstance = True
+
+EH:
+  Set ObjFrm = Nothing
+
+End Sub
+
+Private Sub DatePicker_core_reset()
+  
+  ' Destoys all objects setted in DPC
+  On Error GoTo EH
+  Set GLOOBJ_LblHead2 = Nothing
+
+  Set GLOOBJ_SpinHead1 = Nothing
+  Set GLOOBJ_SpinHead2 = Nothing
+
+  Set GLOOBJ_LblBody1 = Nothing
+  Set GLOOBJ_LblBody2 = Nothing
+  Set GLOOBJ_LblBody3 = Nothing
+  Set GLOOBJ_LblBody4 = Nothing
+  Set GLOOBJ_LblBody5 = Nothing
+  Set GLOOBJ_LblBody6 = Nothing
+  Set GLOOBJ_LblBody7 = Nothing
+
+  Set GLOOBJ_LblBody8 = Nothing
+  Set GLOOBJ_LblBody9 = Nothing
+  Set GLOOBJ_LblBody10 = Nothing
+  Set GLOOBJ_LblBody11 = Nothing
+  Set GLOOBJ_LblBody12 = Nothing
+  Set GLOOBJ_LblBody13 = Nothing
+  Set GLOOBJ_LblBody14 = Nothing
+
+  Set GLOOBJ_LblBody15 = Nothing
+  Set GLOOBJ_LblBody16 = Nothing
+  Set GLOOBJ_LblBody17 = Nothing
+  Set GLOOBJ_LblBody18 = Nothing
+  Set GLOOBJ_LblBody19 = Nothing
+  Set GLOOBJ_LblBody20 = Nothing
+  Set GLOOBJ_LblBody21 = Nothing
+
+  Set GLOOBJ_LblBody22 = Nothing
+  Set GLOOBJ_LblBody23 = Nothing
+  Set GLOOBJ_LblBody24 = Nothing
+  Set GLOOBJ_LblBody25 = Nothing
+  Set GLOOBJ_LblBody26 = Nothing
+  Set GLOOBJ_LblBody27 = Nothing
+  Set GLOOBJ_LblBody28 = Nothing
+
+  Set GLOOBJ_LblBody29 = Nothing
+  Set GLOOBJ_LblBody30 = Nothing
+  Set GLOOBJ_LblBody31 = Nothing
+  Set GLOOBJ_LblBody32 = Nothing
+  Set GLOOBJ_LblBody33 = Nothing
+  Set GLOOBJ_LblBody34 = Nothing
+  Set GLOOBJ_LblBody35 = Nothing
+
+  Set GLOOBJ_LblBody36 = Nothing
+  Set GLOOBJ_LblBody37 = Nothing
+  Set GLOOBJ_LblBody38 = Nothing
+  Set GLOOBJ_LblBody39 = Nothing
+  Set GLOOBJ_LblBody40 = Nothing
+  Set GLOOBJ_LblBody41 = Nothing
+  Set GLOOBJ_LblBody42 = Nothing
+  
+  Set GLOOBJ_FraDatepicker2 = Nothing
+  Set GLOOBJ_FraDatepicker1 = Nothing
+  
+  Let GLOBooInstance = False
+EH:
+End Sub
+
+
+
+' ASSETS ----------------------------------------------------------------------------'
+Private Function Datepicker_asset_get_horizontal_align(ByVal DCtlTarget As MSForms.Control, ByVal DEnuAlign As DPC_Alignment) As Long
+  
+  Dim xLeft As Long, xDPWidth As Long, CtlTargetParentLeft As Long
+  
+  On Error GoTo EH
+  With GLOOBJ_FraDatepicker1.Parent
+    
+    Let CtlTargetParentLeft = IIf(VBA.TypeName(DCtlTarget.Parent) = VBA.TypeName(GLOOBJ_FraDatepicker1.Parent), 0, DCtlTarget.Parent.Left) + 2
+    
+    Let xDPWidth = GLOOBJ_FraDatepicker1.Width
+    Select Case DEnuAlign
+      Case dpcRight: Let xLeft = ((DCtlTarget.Left + DCtlTarget.Width) - xDPWidth) + CtlTargetParentLeft
+      Case dpcCenter: Let xLeft = ((DCtlTarget.Left + (DCtlTarget.Width / 2)) - (xDPWidth / 2)) + (CtlTargetParentLeft / 2)
+      Case Else: Let xLeft = DCtlTarget.Left + CtlTargetParentLeft  ' dpcLeft
+    End Select
+    
+    If (xLeft + xDPWidth) > .InsideWidth Then Let xLeft = xLeft - ((xLeft + xDPWidth) - .InsideWidth)
+    If xLeft < 0 Then Let xLeft = 0
+  
+  End With
+  Let Datepicker_asset_get_horizontal_align = xLeft
+
+EH:
+
 End Function
+
+Private Function Datepicker_asset_get_vertical_align(ByVal DCtlTarget As MSForms.Control) As Long
+  
+  Dim xTop As Long, xDPHeight As Long, CtlTargetParentTop As Long
+  
+  On Error GoTo EH
+  With GLOOBJ_FraDatepicker1.Parent
+    Let xDPHeight = GLOOBJ_FraDatepicker1.Height ' .Controls("DatepickerFrame1").Height
+    
+    Let CtlTargetParentTop = IIf(VBA.TypeName(DCtlTarget.Parent) = VBA.TypeName(GLOOBJ_FraDatepicker1.Parent), 0, DCtlTarget.Parent.Top) + 5
+    
+    Let xTop = DCtlTarget.Top + DCtlTarget.Height + CtlTargetParentTop
+    
+    If (xTop + xDPHeight) > .InsideHeight Then Let xTop = xTop - (((xTop + xDPHeight) - .InsideHeight) - DCtlTarget.Height)
+  End With
+  Let Datepicker_asset_get_vertical_align = xTop
+
+EH:
+
+End Function
+
+
+
+' ERRORS MANNAGEMENT AND ASSERTSIONS ------------------------------------------------'
+Private Sub Debug_assert(ByVal Cond As Boolean, Optional Origin As String = VBA.vbNullString)
+  
+  'This method works with a project variable called Debugging, _
+   this variable can be initialized in menu: Tools > Project properties > Conditional compilation arguments: Debugging = 1
+  #If Debbuging Then
+    Debug.Assert Cond
+    If Not Cond Then Debug.Print "Assert on: " & Origin
+  #End If
+
+End Sub
+
+
+
+' PUBLIC METHODS LIST (INTERFACE) ---------------------------------------------------'
+Public Sub DatePicker( _
+  ByVal FRM As MSForms.UserForm, _
+  Optional DJustForm As DPC_JustForm = dpcAsObject, _
+  Optional DFirstDay As VbDayOfWeek = VBA.vbMonday, _
+  Optional DControl As Object, _
+  Optional DAlign As DPC_Alignment = dpcLeft, _
+  Optional DBaseColor As XlRgbColor = 4616993, _
+  Optional DMsgBox As Boolean = False)
+
+  On Error GoTo EH
+  Call DatePicker_open(FRM, DJustForm, DFirstDay, DControl, DAlign, DBaseColor, DMsgBox)
+
+EH:
+
+End Sub
+' PUBLIC METHODS LIST (INTERFACE) ---------------------------------------------------'
+' =========================== DATE PICKER CLASS STRUCTURE ============================'
 
